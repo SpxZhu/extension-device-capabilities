@@ -1,0 +1,7 @@
+/build/
+/.internal/
+/.external/
+/.cache/
+/.editor_settings
+/reports/
+**/__pycache__/

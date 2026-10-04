@@ -1,0 +1,21 @@
+[project]
+title = Device Capabilities
+version = 0.1.1
+
+[library]
+include_dirs = device_capabilities
+
+defold_min_version = 1.14.0
+
+[bootstrap]
+main_collection = /example/main.collectionc
+
+[script]
+shared_state = 1
+
+[android]
+package = com.example.devicecapabilities
+minimum_sdk_version = 23
+
+[ios]
+bundle_identifier = com.example.devicecapabilities
