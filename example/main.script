@@ -1,17 +1,18 @@
 function init(self)
     assert(device_capabilities, "Native extension missing")
-    for _, name in ipairs({"device_info", "location_start", "location_poll", "location_cancel",
+    for _, name in ipairs({"device_info",
         "integrity_start", "integrity_poll", "integrity_cancel", "integrity_show_dialog"}) do
         assert(type(device_capabilities[name]) == "function", "Missing API: " .. name)
     end
+    assert(device_capabilities.location_start == nil and device_capabilities.location_poll == nil
+        and device_capabilities.location_cancel == nil, "Retired location APIs must not be exported")
     local info = device_capabilities.device_info()
     assert(type(info) == "table" and type(info.status) == "string")
     print("DEVICE_CAPABILITIES_PASS " .. info.status)
-    -- No sensitive state, coordinates or tokens are logged.
+    -- No sensitive state or tokens are logged.
     if sys.get_config_boolean("example.exit", false) then sys.exit(0) end
 end
 
 function final(self)
-    device_capabilities.location_cancel(0)
     device_capabilities.integrity_cancel(0)
 end

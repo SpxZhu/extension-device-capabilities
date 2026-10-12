@@ -1,4 +1,2 @@
--keep class com.defold.devicecapabilities.LocationBridge { *; }
--keep class com.defold.devicecapabilities.LocationBridge$* { *; }
 -keep class com.defold.devicecapabilities.DeviceBridge { *; }
 -keep class com.defold.devicecapabilities.DeviceBridge$* { *; }

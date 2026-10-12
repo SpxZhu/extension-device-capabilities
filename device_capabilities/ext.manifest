@@ -2,4 +2,4 @@ name: DeviceCapabilities
 platforms:
     ios:
         context:
-            frameworks: [CoreLocation, UIKit, CFNetwork]
+            frameworks: [CFNetwork]
