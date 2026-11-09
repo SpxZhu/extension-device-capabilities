@@ -5,6 +5,7 @@
 #include <ifaddrs.h>
 #include <net/if.h>
 #include <string.h>
+void DeviceSnapshotIOSInitialize(lua_State*);
 
 static int DeviceInfo(lua_State* L)
 {
@@ -37,6 +38,7 @@ dmExtension::Result DeviceIOSInitialize(dmExtension::Params* params)
 {
     const luaL_reg methods[] = {{"device_info", DeviceInfo}, {0, 0}};
     luaL_register(params->m_L, "device_capabilities", methods); lua_pop(params->m_L, 1);
+    DeviceSnapshotIOSInitialize(params->m_L);
     return dmExtension::RESULT_OK;
 }
 #endif

@@ -28,11 +28,17 @@ public final class DeviceBridge {
     private int requestId, generation, errorCode;
     private String status = "unavailable", token = "";
     private StandardIntegrityToken result;
+    private final DeviceSnapshot snapshot;
 
     public DeviceBridge(Activity activity) {
         this.activity = activity;
         manager = IntegrityManagerFactory.createStandard(activity);
+        snapshot = new DeviceSnapshot(activity, this);
     }
+    public boolean snapshotStart(int id) { return snapshot.start(id); }
+    public String[] snapshotPoll(int id) { return snapshot.poll(id); }
+    public void snapshotCancel(int id) { snapshot.cancel(id); }
+    public void close() { snapshot.close(); cancel(0); }
     private int setting(String key) {
         try { return Settings.Global.getInt(activity.getContentResolver(), key, 0); }
         catch (RuntimeException ignored) { return -1; }

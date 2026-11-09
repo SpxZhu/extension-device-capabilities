@@ -2,4 +2,5 @@ name: DeviceCapabilities
 platforms:
     ios:
         context:
-            frameworks: [CFNetwork]
+            frameworks: [CFNetwork, Network, CoreMotion, AVFoundation, AdSupport, Metal, QuartzCore, WebKit, OpenGLES]
+            weakFrameworks: [AppTrackingTransparency]
